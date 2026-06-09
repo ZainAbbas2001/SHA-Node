@@ -1,0 +1,19 @@
+idf_component_register(
+    SRCS
+        "rtc_state.c"
+        "power_fsm.c"
+        "safety.c"
+    INCLUDE_DIRS
+        "."
+        "${CMAKE_CURRENT_SOURCE_DIR}/../include"
+    REQUIRES
+        drivers
+        driver
+        freertos
+        log
+        esp_rom
+        esp_hw_support
+        esp_timer
+        soc
+        hal
+)

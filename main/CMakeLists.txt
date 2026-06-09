@@ -1,0 +1,32 @@
+idf_component_register(
+    SRCS
+        "main.c"
+    INCLUDE_DIRS
+        "."
+        "${CMAKE_CURRENT_SOURCE_DIR}/../include"
+    REQUIRES
+        # Project components
+        drivers
+        core
+        net
+        tasks
+        # ESP-IDF components
+        nvs_flash
+        driver
+        esp_wifi
+        esp_event
+        esp_netif
+        esp_http_client
+        esp_https_ota
+        app_update
+        fatfs
+        sdmmc
+        spiffs
+        spi_flash
+        freertos
+        log
+        hal
+        esp_timer
+        esp_hw_support
+        esp_rom
+)

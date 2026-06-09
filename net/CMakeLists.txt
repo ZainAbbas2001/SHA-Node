@@ -1,0 +1,26 @@
+idf_component_register(
+    SRCS
+        "wifi_manager.c"
+        "mqtt_client.c"
+        "store_forward.c"
+        "ota_manager.c"
+    INCLUDE_DIRS
+        "."
+        "include"
+        "${CMAKE_CURRENT_SOURCE_DIR}/../include"
+    REQUIRES
+        core
+        drivers
+        freertos
+        log
+        esp_wifi
+        esp_event
+        esp_netif
+        esp_http_client
+        esp_https_ota
+        app_update
+        mqtt
+        nvs_flash
+        esp_timer
+        hal
+)

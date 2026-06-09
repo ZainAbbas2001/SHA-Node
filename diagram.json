@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "author": "SHA-Node",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+
+    {
+      "type": "wokwi-microsd-card",
+      "id": "sd1",
+      "top": -80,
+      "left": 330,
+      "attrs": {}
+    },
+
+    { "type": "wokwi-resistor", "id": "rpull_sda", "top": 120,  "left": 330, "rotate": 90, "attrs": { "value": "4700" } },
+    { "type": "wokwi-resistor", "id": "rpull_scl", "top": 150,  "left": 330, "rotate": 90, "attrs": { "value": "4700" } },
+
+    { "type": "wokwi-resistor", "id": "r15", "top": 240, "left": 330, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r16", "top": 290, "left": 330, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r17", "top": 340, "left": 330, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r18", "top": 390, "left": 330, "rotate": 90, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r6",  "top": 440, "left": 330, "rotate": 90, "attrs": { "value": "220" } },
+
+    { "type": "wokwi-led", "id": "led_mic",    "top": 240, "left": 420, "attrs": { "color": "blue"   } },
+    { "type": "wokwi-led", "id": "led_sd",     "top": 290, "left": 420, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "led_haptic", "top": 340, "left": 420, "attrs": { "color": "orange" } },
+    { "type": "wokwi-led", "id": "led_modem",  "top": 390, "left": 420, "attrs": { "color": "green"  } },
+    { "type": "wokwi-led", "id": "led_motor",  "top": 440, "left": 420, "attrs": { "color": "red"    } },
+
+    { "type": "wokwi-resistor", "id": "r_vbus_pd", "top": 520, "left": 330, "rotate": 90, "attrs": { "value": "10000" } },
+    { "type": "wokwi-pushbutton", "id": "btn_vbus", "top": 520, "left": 420, "attrs": { "color": "green" } }
+  ],
+
+  "connections": [
+    ["esp:TX", "$serialMonitor:RX", "", []],
+    ["esp:RX", "$serialMonitor:TX", "", []],
+
+    ["sd1:SCK",  "esp:GPIO12", "purple", []],
+    ["sd1:MOSI", "esp:GPIO11", "blue",   []],
+    ["sd1:MISO", "esp:GPIO13", "orange", []],
+    ["sd1:CS",   "esp:GPIO10", "green",  []],
+    ["sd1:VCC",  "esp:3V3",    "red",    []],
+    ["sd1:GND",  "esp:GND.1",  "black",  []],
+
+    ["rpull_sda:1", "esp:GPIO8", "yellow", []],
+    ["rpull_sda:2", "esp:3V3",   "red",    []],
+    ["rpull_scl:1", "esp:GPIO9", "yellow", []],
+    ["rpull_scl:2", "esp:3V3",   "red",    []],
+
+    ["r15:1", "esp:GPIO15",   "blue",   []],
+    ["r15:2", "led_mic:A",    "blue",   []],
+    ["led_mic:K",    "esp:GND.2", "black", []],
+
+    ["r16:1", "esp:GPIO16",   "yellow", []],
+    ["r16:2", "led_sd:A",     "yellow", []],
+    ["led_sd:K",     "esp:GND.2", "black", []],
+
+    ["r17:1", "esp:GPIO17",   "orange", []],
+    ["r17:2", "led_haptic:A", "orange", []],
+    ["led_haptic:K", "esp:GND.2", "black", []],
+
+    ["r18:1", "esp:GPIO18",   "green",  []],
+    ["r18:2", "led_modem:A",  "green",  []],
+    ["led_modem:K",  "esp:GND.2", "black", []],
+
+    ["r6:1",  "esp:GPIO6",    "red",    []],
+    ["r6:2",  "led_motor:A",  "red",    []],
+    ["led_motor:K",  "esp:GND.2", "black", []],
+
+    ["btn_vbus:1.l", "esp:3V3",    "red",   []],
+    ["btn_vbus:2.r", "esp:GPIO21", "white", []],
+    ["r_vbus_pd:1",  "esp:GPIO21", "white", []],
+    ["r_vbus_pd:2",  "esp:GND.2",  "black", []]
+  ],
+
+  "dependencies": {}
+}

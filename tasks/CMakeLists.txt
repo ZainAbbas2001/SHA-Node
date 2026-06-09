@@ -1,0 +1,15 @@
+idf_component_register(
+    SRCS
+        "task_audio.c"
+        "task_telemetry.c"
+    INCLUDE_DIRS
+        "."
+        "${CMAKE_CURRENT_SOURCE_DIR}/../include"
+    REQUIRES
+        core
+        drivers
+        net
+        freertos
+        log
+        esp_timer
+)

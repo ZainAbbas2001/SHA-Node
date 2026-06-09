@@ -1,0 +1,21 @@
+idf_component_register(
+    SRCS
+        "fuel_gauge.c"
+        "mic_dma.c"
+        "sd_storage.c"
+        "haptic.c"
+        "power_rails.c"
+    INCLUDE_DIRS
+        "."
+        "${CMAKE_CURRENT_SOURCE_DIR}/../include"
+    REQUIRES
+        driver
+        freertos
+        log
+        esp_timer
+        fatfs
+        sdmmc
+        esp_hw_support
+        hal
+        soc
+)

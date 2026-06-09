@@ -1,0 +1,17 @@
+## IDF Component Manager manifest
+## https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/tools/idf-component-manager.html
+
+version: "1.0.0"
+description: SHA-Node firmware
+
+dependencies:
+  idf:
+    version: ">=5.0.0"
+
+  ## esp-mqtt and esp-tls are bundled with ESP-IDF v5.x (components/mqtt and
+  ## components/esp-tls) — do NOT list them here or the component manager will
+  ## attempt to download an overriding version from the registry.
+  ##
+  ## joltwallet/esp_littlefs would go here if/when LittleFS is mounted at
+  ## runtime.  The partition exists in partitions.csv but no mount call has
+  ## been added yet, so the dependency is omitted for now.
