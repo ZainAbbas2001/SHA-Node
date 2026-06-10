@@ -33,13 +33,13 @@ power_fsm_run()           ← never returns
 ```
 BOOT ──────────────────────────────────────────────────────────────┐
   │  SOC ≥ 15% (or USB present)                                    │
-  ▼                                                                 │
-ACTIVE_RECORD   ← triggers audio task, records for 10 s           │ SOC < 15%
-  │  recording done                                                 │
-  ▼                                                                 │
-ACTIVE_SYNC     ← store_forward drains SD queue to MQTT           │
-  │  sync done                                                      │
-  ▼                                                                 │
+  ▼                                                                │
+ACTIVE_RECORD   ← triggers audio task, records for 10 s            │ SOC < 15%
+  │  recording done                                                │
+  ▼                                                                │
+ACTIVE_SYNC     ← store_forward drains SD queue to MQTT            │
+  │  sync done                                                     │
+  ▼                                                                │
 LOW_POWER_FLUSH ← safety_emergency_flush() flushes haptic, SD    ◄─┘
   │
   ▼
@@ -210,7 +210,7 @@ I2S/LEDC stubs become no-ops; GPIO state is controlled via `stub_gpio_set_level(
 ├── test/                 Unity test component + hardware stubs
 ├── docs/                 architecture.md — Mermaid diagrams, GPIO table, task map
 ├── partitions.csv        custom 8 MB partition layout
-├── sdkconfig.defaults    baseline Kconfig (PSRAM disabled for Wokwi)
+├── sdkconfig.defaults    baseline Kconfig (PSRAM disabled for Wokwi), enable for actual hardware
 ├── diagram.json          Wokwi circuit diagram
 └── wokwi.toml            Wokwi simulator entry point
 ```
